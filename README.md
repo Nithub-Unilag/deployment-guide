@@ -1,4 +1,4 @@
-**Reach out to me (repo creator) via mmaryraphaella@gmail.com before you attempt any deployment**
+**Kindly reach out to Oma via mmaryraphaella@gmail.com before you attempt any deployment**
 
 ## Deploying your apps on the NITHUB server
 Reference [this](https://gist.github.com/Mbaoma/8623408d608228a23a0d1560e84b687b) GitHub gist for more information on how to setup the CI/CD pipeline in your repository.
