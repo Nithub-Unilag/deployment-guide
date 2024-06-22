@@ -10,3 +10,8 @@ Then add a config file named after your repo ```repo-name.conf```, to the ```ngi
 Add your proposed URL to the list of URLs listed under the ```map $http_origin $origin_allowed``` list.
 
 Create an upstream config for your app in the ```nginx.conf``` file and add the file's path to the ```include``` parameters.
+
+## Debug Nginx container
+```
+docker logs --tail 15 nginx-container-id
+```
