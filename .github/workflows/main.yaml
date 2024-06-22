@@ -34,11 +34,11 @@ jobs:
         port: ${{ secrets.PORT }}
         command_timeout: 200m
         script: |
-          if [-d "deployment-guide" ]: then 
+          if [-d "deployment-guide" ]; then 
                   echo "deployment-guide exists. Pulling latest changes." 
                   cd deployment-guide
                   git pull origin main
-                  docker compose restart 
+                  docker-compose restart 
           else
                   echo "deployment-guide does not exist. Cloning repository."
                   git clone https://github.com/Nithub-Unilag/deployment-guide.git ./
