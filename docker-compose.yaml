@@ -34,7 +34,7 @@ services:
    volumes:
       - grafana-storage:/var/lib/grafana
    ports:
-     - 5000:3000
+     - 3300:3000
    environment:
       - GF_SECURITY_ADMIN_USER=nithub
       - GF_SECURITY_ADMIN_PASSWORD=nithub-password
