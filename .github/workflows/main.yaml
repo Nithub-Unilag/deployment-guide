@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - runs tests and deploys to Azure VM
+name: CI/CD Pipeline - deploys to NITHUB's server
 
 on:
   push:
