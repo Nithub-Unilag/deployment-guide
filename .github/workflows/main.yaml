@@ -41,7 +41,7 @@ jobs:
                   docker-compose restart 
           else
                   echo "deployment-guide does not exist. Cloning repository."
-                  git clone https://github.com/Nithub-Unilag/deployment-guide.git ./
+                  git clone https://github.com/Nithub-Unilag/deployment-guide.git deployment-guide
                   cd deployment-guide
                   docker-compose up -d
           fi
