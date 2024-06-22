@@ -1,0 +1,48 @@
+name: CI/CD Pipeline - runs tests and deploys to Azure VM
+
+on:
+  push:
+    branches: ["main"]
+  # pull_request:
+  #   branches: ["branch"]
+
+  workflow_dispatch:
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    # - uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 18
+    # - run: npm install
+
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: checkout
+
+    steps:
+    - name: login to VM and update the app
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        command_timeout: 200m
+        script: |
+          if [-d "deployment-guide" ]: then 
+                  echo "deployment-guide exists. Pulling latest changes." 
+                  cd deployment-guide
+                  git pull origin main
+                  docker compose restart 
+          else
+                  echo "deployment-guide does not exist. Cloning repository."
+                  git clone https://github.com/Nithub-Unilag/deployment-guide.git ./
+                  cd deployment-guide
+                  docker-compose up -d
+          fi
+
