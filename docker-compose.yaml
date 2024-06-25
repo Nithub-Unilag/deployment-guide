@@ -15,7 +15,9 @@ services:
       - ./nginx/config/prometheus.conf:/etc/nginx/prometheus.conf
       - ./nginx/config/nitprofile-client-app-1.conf:/etc/nginx/nitprofile-client-app-1.conf
       - ./nginx/log:/var/log/nginx
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /usr/share/nginx/html:/usr/share/nginx/html
+      - /etc/letsencrypt/ssl:/etc/letsencrypt:ro
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
       # add other config files (from config folder) here
     ports:
     - "80:80"
